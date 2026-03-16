@@ -7,4 +7,4 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-Student.create(name: "StudentA", level: "C+", invoicee: "yes", schedule: "2x weekly")!
+Student.create(name: "StudentA", level: "C+", invoicee: "yes", schedule: "2x weekly")

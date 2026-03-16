@@ -1,8 +1,15 @@
 <%= @user.email %>
 
 <% @user.words.each do |user_word| %>
-    <%= user_word.word %>
+    <%= link_to user_word.word, user_word %>
+    
     <% end %>
+
+    
+<%= button_to "New Word", 
+              new_word_path, 
+              method: :get, 
+              class: "nav-link" %>
 
 
 <%= button_to "Log out", 

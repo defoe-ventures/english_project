@@ -10,6 +10,12 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= form.label :sentence, "Sentence:" %>
+  <%= form.text_field :sentence, {value: @question.sentence }%>
+  <%= form.label :answer, "Answer:" %>
+  <%= form.text_field :answer, {value: @question.answer }%>
+  
 
   <div>
     <%= form.submit %>

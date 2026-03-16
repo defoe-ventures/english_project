@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :words
   resources :questions
   resources :lessons
   # get 'students', to: 'students#index'

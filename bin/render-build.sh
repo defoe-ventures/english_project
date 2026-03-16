@@ -3,7 +3,8 @@
 set -o errexit
 
 bundle install
-bundle exec rails assets:precompile
-bundle exec rails assets:clean
 
-bundle exec rails db:setup
+bin/rails assets:precompile
+bin/rails assets:clean
+
+bin/rails db:setup

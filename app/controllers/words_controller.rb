@@ -25,6 +25,8 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       if @word.save
+        WordList.new(word: @word, user: current_user).save!
+        
         format.html { redirect_to word_url(@word), notice: "Word was successfully created." }
         format.json { render :show, status: :created, location: @word }
       else
@@ -32,6 +34,7 @@ class WordsController < ApplicationController
         format.json { render json: @word.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /words/1 or /words/1.json

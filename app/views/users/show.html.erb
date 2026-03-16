@@ -1,5 +1,9 @@
 <%= @user.email %>
 
+<% @user.words.each do |user_word| %>
+    <%= user_word.word %>
+    <% end %>
+
 
 <%= button_to "Log out", 
               destroy_user_session_path, 

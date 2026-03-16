@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   def index
+    Student.find_or_create_by(name: "StudentA", level: "C+", invoicee: "yes", schedule: "2x weekly")!
     @students = Student.all
   end
 

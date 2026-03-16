@@ -1,0 +1,10 @@
+<h1>Students#edit</h1>
+<p>Find me in app/views/students/edit.html.erb</p>
+
+<%= form_with url: "/students", method: :put do |form| %>
+    <%= form.label :name, "Name:" %>
+    <%= form.text_field :name, {value: @student.name }%>
+    <%= form.label :name, "Level:" %>
+    <%= form.text_field :level %>
+    <%= form.submit "Submit" %>
+  <% end %>

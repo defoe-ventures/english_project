@@ -1,0 +1,7 @@
+<h1>Students#new</h1>
+<p>Find me in app/views/students/new.html.erb</p>
+<%= form_with url: "/students", method: :post do |form| %>
+    <%= form.label :name, "Name:" %>
+    <%= form.text_field :name %>
+    <%= form.submit "Submit" %>
+  <% end %>

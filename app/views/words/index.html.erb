@@ -6,7 +6,6 @@
   align-items: center
 "
  button_box = "
-   width: 25%;
    display: flex;
    justify-content: space-around;
    align-items: center;
@@ -21,8 +20,8 @@
 
 <h1>My Words</h1> 
 <div style="<%= button_box %>">
-<%= button_to "Add New Word", new_word_path, method: :get %>
-<%= button_to "Home", root_path, method: :get %>
+<%= button_to "Add New Word", new_word_path, method: :get, style: "margin: 10px;"  %>
+<%= button_to "Home", root_path, method: :get, style: "margin: 10px;"  %>
 </div>
 
 <div id="words">

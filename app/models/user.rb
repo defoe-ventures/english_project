@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
          has_many :word_lists
          has_many :words, through: :word_lists
+
+         has_many :quizzes
          
 end

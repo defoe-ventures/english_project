@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :quizzes
-  
 
 
   devise_for :users, controllers: {
@@ -11,12 +9,11 @@ Rails.application.routes.draw do
   resources :questions
   resources :lessons
   resources :words, :except => [:index]
-  
-  
-  
+    
  get '/words', to: redirect('/')
 
- resources :quizzes
+ resources :quizzes, :except => [:index]
+ get '/quizzes', to: redirect('/')
 
 
 

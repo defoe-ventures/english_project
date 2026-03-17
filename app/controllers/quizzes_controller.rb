@@ -12,7 +12,8 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/new
   def new
-    @quiz = Quiz.new
+    @words = current_user.words.sample(5)
+    @quiz = Quiz.new(words: @words.pluck(:id))
   end
 
   # GET /quizzes/1/edit
@@ -60,11 +61,16 @@ class QuizzesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
-      @quiz = Quiz.find(params[:id])
+      @quiz = Quiz.find_by(id: params[:id])
+
+      unless @quiz
+        redirect_to root_path and return
+      end
+      
     end
 
     # Only allow a list of trusted parameters through.
     def quiz_params
-      params.fetch(:quiz, {})
+      params.require(:quiz).permit(:user_id, :score, words: [])
     end
 end

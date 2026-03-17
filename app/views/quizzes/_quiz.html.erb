@@ -1,2 +1,4 @@
 <div id="<%= dom_id quiz %>">
+
+<%= link_to Word.where(id: quiz&.words).map(&:word), quiz %>
 </div>

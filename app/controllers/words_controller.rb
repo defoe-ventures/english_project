@@ -4,6 +4,7 @@ class WordsController < ApplicationController
   # GET /words or /words.json
   def index
     admin_user = false
+    @quizzes =  current_user == admin_user ? Quiz.all : current_user.quizzes
     @words = current_user == admin_user ? Word.all : current_user.words
   end
 

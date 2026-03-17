@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :quizzes
   
 
 
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   
   
  get '/words', to: redirect('/')
+
+ resources :quizzes
 
 
 

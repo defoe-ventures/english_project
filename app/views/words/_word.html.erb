@@ -1,4 +1,44 @@
-<div id="<%= dom_id word %>">
-<%= word.word %> - 
-<%= word.definition %>
+<% content_for :extra_css do %>
+  <%= stylesheet_link_tag "quiz_styles" %>
+<% end %>
+
+<div class="tooltip-container" onclick="handleTooltip(this, event)">
+  <%= link_to word.word, word, class: "tooltip-link" %>
+  <span class="tooltip-box"><%= word.definition %></span>
 </div>
+
+
+<script>
+document.addEventListener("click", function(event) {
+  // Find the closest tooltip container from the click
+  const container = event.target.closest('.tooltip-container');
+  
+  // If we aren't clicking a tooltip, close all open ones and exit
+  if (!container) {
+    document.querySelectorAll('.tooltip-container.is-active').forEach(el => {
+      el.classList.remove('is-active');
+    });
+    return;
+  }
+
+  // Only run this logic on touch devices (Android/iOS)
+  const isTouch = window.matchMedia("(pointer: coarse)").matches;
+  
+  if (isTouch) {
+    // If the tooltip isn't already active...
+    if (!container.classList.contains('is-active')) {
+      event.preventDefault(); // Stop the link from opening
+      
+      // Close any other open ones first
+      document.querySelectorAll('.tooltip-container.is-active').forEach(el => {
+        el.classList.remove('is-active');
+      });
+
+      // Show this one
+      container.classList.add('is-active');
+    } 
+    // If it IS already active, we do nothing. 
+    // The browser will naturally follow the link on this second tap.
+  }
+});
+</script>

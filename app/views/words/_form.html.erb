@@ -1,3 +1,9 @@
+<div style="
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+">
 <%= form_with(model: word) do |form| %>
   <% if word.errors.any? %>
     <div style="color: red">
@@ -10,13 +16,23 @@
       </ul>
     </div>
   <% end %>
-
+<div style="
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+">
+<span>
   <%= form.label :word, "word:" %>
   <%= form.text_field :word, {value: @word.word }%>
+  </span>
+  <span>
   <%= form.label :definition, "definition:" %>
   <%= form.text_field :definition, {value: @word.definition }%>
+  </span>
   
   
+</div>
 
   <div>
     <%= form.submit %>

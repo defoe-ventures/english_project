@@ -1,7 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @word %>
 
-<div>
+<div style="
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 15%;
+">
+  <%= render @word %>
   <%= link_to "Home", root_path %>
 </div>

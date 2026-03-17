@@ -1,13 +1,32 @@
+<% home_style = "
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+"
+ button_box = "
+   border: 2px solid blue;
+   display: flex;
+ "
+%>
+<div style="<%= home_style %>">
+
 <p style="color: green"><%= notice %></p>
 
+
+<%= button_to "My Account", settings_path, method: :get %>
+
 <h1>My Words</h1> 
+<div style="<%= button_box %>">
 <%= button_to "Generate Quiz", new_quiz_path, method: :get %>
 <%= button_to "Add New Word", new_word_path, method: :get %>
+</div>
 
 <div id="words">
   <% @words.each do |word| %>
     <p>
-      <%= link_to word.word, word %>
+      <%= render word %>
     </p>
   <% end %>
 </div>
@@ -15,4 +34,4 @@
 
 
 
-<%= button_to "My Account", settings_path, method: :get %>
+</div>

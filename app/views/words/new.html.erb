@@ -1,9 +1,17 @@
-<h1>New word</h1>
+<div style="
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+">
+  <h1>New word</h1>
 
-<%= render "form", word: @word %>
+  <%= render "form", word: @word %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Home", root_path %>
+  <div>
+    <%= link_to "Home", root_path %>
+  </div>
+
 </div>

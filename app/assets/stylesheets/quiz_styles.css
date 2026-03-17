@@ -5,7 +5,7 @@
 }
 
 /* Hidden by default */
-.tooltip-box {
+/* .tooltip-box {
   display: none; 
   position: absolute;
   bottom: 125%;
@@ -17,6 +17,32 @@
   border-radius: 4px;
   z-index: 100;
   white-space: nowrap;
+} */
+
+.tooltip-box {
+  display: none;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 100;
+
+  /* The fix */
+  width: max-content;
+  max-width: 250px;       /* Desktop cap */
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 600px) {
+  .tooltip-box {
+    max-width: 80vw;     /* Mobile cap */
+  }
 }
 
 /* --- DESKTOP HOVER --- */

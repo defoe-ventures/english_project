@@ -3,7 +3,8 @@ class WordsController < ApplicationController
 
   # GET /words or /words.json
   def index
-    @words = Word.all
+    admin_user = false
+    @words = current_user == admin_user ? Word.all : current_user.words
   end
 
   # GET /words/1 or /words/1.json

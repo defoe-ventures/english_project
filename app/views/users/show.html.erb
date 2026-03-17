@@ -1,13 +1,9 @@
 <%= @user.email %>
+   
 
-<% @user.words.each do |user_word| %>
-    <%= link_to user_word.word, user_word %>
-    
-    <% end %>
 
-    
-<%= button_to "New Word", 
-              new_word_path, 
+<%= button_to "Home", 
+              root_path, 
               method: :get, 
               class: "nav-link" %>
 

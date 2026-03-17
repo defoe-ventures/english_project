@@ -1,14 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Words</h1>
+<h1>My Words</h1> 
+<%= button_to "+", new_word_path, method: :get %>
 
 <div id="words">
   <% @words.each do |word| %>
-    <%= render word %>
     <p>
-      <%= link_to "Show this word", word %>
+      <%= link_to word.word, word %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New word", new_word_path %>
+
+
+
+<%= button_to "My Account", settings_path, method: :get %>

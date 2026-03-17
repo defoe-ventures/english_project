@@ -4,24 +4,48 @@
   justify-content: center;
   align-items: center;
 
-  margin-top: 15%;
+  margin-top: 5%;
 ">
 
+<div style="display: flex;">
+<span style="margin: 15px">
 <%= @user.email %>
-   
+</span>
 
-
-<%= button_to "Home", 
-              root_path, 
-              method: :get, 
-              class: "nav-link" %>
-
-
+<span style="margin: 15px">
 <%= button_to "Log out", 
               destroy_user_session_path, 
               method: :delete, 
               class: "nav-link" %>
+</span>
                 
+</div>
+
+<div style="
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+">
+
+
+<%= button_to "My Words", 
+              words_path, 
+              method: :get, 
+              class: "nav-link big-button" %>
+
+                
+
+<%= button_to "My Quizzes", 
+              quizzes_path, 
+              method: :get, 
+              class: "nav-link big-button" %>
+
+
+                
+      
+</div>
+
 
 
 </div>

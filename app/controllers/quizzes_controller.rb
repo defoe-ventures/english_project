@@ -3,7 +3,11 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes or /quizzes.json
   def index
-    @quizzes = Quiz.all
+    
+    admin_user = false
+    @quizzes =  current_user == admin_user ? Quiz.all : current_user.quizzes
+    @words = current_user == admin_user ? Word.all : current_user.words
+
   end
 
   # GET /quizzes/1 or /quizzes/1.json

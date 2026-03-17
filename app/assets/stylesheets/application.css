@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .big-button {
+    width: 35vw;
+    height: 35vh;
+    margin: 2.5vw;
+    font-size: 2rem;
+    /* white-space: nowrap; */
+ }

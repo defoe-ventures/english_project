@@ -1,14 +1,33 @@
+<% home_style = "
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+"
+ button_box = "
+   width: 25%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+ "
+%>
+<div style="<%= home_style %>">
 <p style="color: green"><%= notice %></p>
 
-<h1>Quizzes</h1>
+<h1>My Quizzes</h1>
+<div style="<%= button_box %>">
+<%= button_to "Generate New Quiz", new_quiz_path, method: :get %>
+
+<%= button_to "Home", root_path, method: :get %>
+</div>
 
 <div id="quizzes">
   <% @quizzes.each do |quiz| %>
-    <%= render quiz %>
     <p>
-      <%= link_to "Show this quiz", quiz %>
+      <%= render quiz %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New quiz", new_quiz_path %>
+</div>

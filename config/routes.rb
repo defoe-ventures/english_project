@@ -8,12 +8,12 @@ Rails.application.routes.draw do
 
   resources :questions
   resources :lessons
-  resources :words, :except => [:index]
+  resources :words
     
- get '/words', to: redirect('/')
+#  get '/words', to: redirect('/')
 
- resources :quizzes, :except => [:index]
- get '/quizzes', to: redirect('/')
+ resources :quizzes#, :except => [:index]
+#  get '/quizzes', to: redirect('/')
 
 
 
@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "lessons#index"
 
-  get "/settings", to: "users#show", as: "settings"
+  # get "/settings", to: "users#show", as: "settings"
 
     
-    root "words#index"
+    root "users#show"
 end

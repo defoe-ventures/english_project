@@ -1,5 +1,13 @@
 
-<%= form_with(model: quiz) do |form| %>
+<%= form_with(model: quiz, html: {
+  style: "
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    "
+  }) do |form| %>
   <% if quiz.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
@@ -15,30 +23,27 @@
     <%# 1. Hidden User ID %>
   <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <%# 2. Score Field %>
-  <div class="field">
-    <%= form.label :score %>
-    <%= form.number_field :score %>
-  </div>
-
   <%# 3. Words (Array of Numbers) %>
-  <div class="field">
-    <%= form.label :words, "Word IDs" %>
+  
+    <% form.label :words, "Word IDs" %>
     
     <%# To submit an array, we use nil as the first argument and manually set the name with [] %>
     <%# You can repeat this field as many times as needed %>
 
-    <% @words.each do |word| %>
-     <%= form.hidden_field nil, name: 'quiz[words][]', value: word.id %>
+    <% words.each do |word| %>
+      <%= render "words/word", word: word %>
+      
+      <%= form.hidden_field :words, multiple: true, value: word.id %>
     <% end %>
-  </div>
+    
+    
 
-
-  <% @words.each do |word| %>
-    <p><%= word.word %> - <%= word.definition %></p>
-    <% end %>
-
-  <div>
-    <%= form.submit %>
+  <div style="margin: 10px; display: flex;">
+    <%# 2. Score Field %>
+    <span>
+      <%= form.label :score %>
+      <%= form.number_field :score, placeholder: 100 %>
+    </span>
+    <%= form.submit "Submit" %>
   </div>
 <% end %>

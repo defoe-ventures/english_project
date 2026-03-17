@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag "quiz_styles" %>
 <% end %>
 
-<div class="tooltip-container" onclick="handleTooltip(this, event)">
+<div class="tooltip-container" onclick="handleTooltip(this, event)" style="margin: 5px;">
   <%= link_to word.word, word, class: "tooltip-link" %>
   <span class="tooltip-box"><%= word.definition %></span>
 </div>

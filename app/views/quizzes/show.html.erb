@@ -1,10 +1,13 @@
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
 <p style="color: green"><%= notice %></p>
 
-<%= render @quiz %>
+<p> <%= @quiz.score %> </p>
+<p> <%= @quiz.created_at.to_date %> </p>
+<p> <%= @quiz.word_list.words %> </p>
 
 <div>
-  <%= link_to "Edit this quiz", edit_quiz_path(@quiz) %> |
   <%= link_to "Back to quizzes", quizzes_path %>
-
-  <%= button_to "Destroy this quiz", @quiz, method: :delete %>
+  
+<%= button_to "Home", root_path, method: :get, style: "margin: 10px;" %>
+</div>
 </div>

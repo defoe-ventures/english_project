@@ -17,7 +17,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new
   def new
     @words = current_user.words.sample(5)
-    @quiz = Quiz.new(words: @words.pluck(:id))
+    @quiz = Quiz.new#(words: @words.pluck(:id))
   end
 
   # GET /quizzes/1/edit

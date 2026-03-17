@@ -1,3 +1,11 @@
+<% button_box = "
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   white-space: nowrap;
+ "
+%>
+
 <div style="
   display: flex;
   flex-direction: column;
@@ -7,10 +15,12 @@
   margin-top: 1%;
 ">
 <h1>New quiz</h1>
+<div style="<%= button_box %>">
+  <%= button_to "Home", root_path, method: :get, style: "margin: 10px;" %>
+</div>
 
-<%= render "form", quiz: @quiz %>
+<%= render "form", quiz: @quiz, words: @words %>
 
 <br>
 
-  <%= button_to "Home", root_path, method: :get %>
 </div>

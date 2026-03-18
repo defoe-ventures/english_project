@@ -27,6 +27,12 @@ Rails.application.routes.draw do
 
   # get "/settings", to: "users#show", as: "settings"
 
-    
-    root "users#show"
+  root to: redirect('/language_practice')
+
+  get 'language_practice', to: 'users#show'#, as: 'language_practice'
+  
+
+  # This catches EVERYTHING else and redirects to root
+  match "*path", to: redirect("/"), via: :all
+  
 end

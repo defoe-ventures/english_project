@@ -5,9 +5,9 @@
 <p> <%= @quiz.created_at.to_date %> </p>
 <p> <%= @quiz.word_list.words %> </p>
 
-<div>
-  <%= link_to "Back to quizzes", quizzes_path %>
+<div style="display: flex; align-items: center; justify-content: center">
+  <%= button_to "Back to Quizzes", quizzes_path, method: :get %>
   
-<%= button_to "Home", root_path, method: :get, style: "margin: 10px;" %>
+  <%= button_to "Home", root_path, method: :get, style: "margin: 10px;" %>
 </div>
 </div>

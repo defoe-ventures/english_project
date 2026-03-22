@@ -28,7 +28,7 @@ class QuizzesController < ApplicationController
   # POST /quizzes or /quizzes.json
   def create
 
-    grades = quiz_params[:key].map.with_index{|correct_answer, x| correct_answer == quiz_params[:answers][x]}
+    grades = quiz_params[:key].map.with_index{|correct_answer, x| correct_answer == quiz_params[:answers][x].downcase}
     grade_tally = grades.tally
 
     score = ((grade_tally[true].to_f / quiz_params[:key].count.to_f) * 100)

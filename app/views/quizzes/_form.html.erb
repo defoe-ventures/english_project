@@ -1,3 +1,6 @@
+<% content_for :extra_css do %>
+  <%= stylesheet_link_tag "quiz_form" %>
+<% end %>
 
 <%= form_with(model: quiz, html: {
   style: "
@@ -6,35 +9,53 @@
     justify-content: center;
     align-items: center;
     width: 15vw;
-    "
+    ",
+    class: "new_word_quiz"
   }) do |form| %>
-  <% if quiz.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+    <% if quiz.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
 
-      <ul>
-        <% quiz.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+          <% quiz.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <%# 1. Hidden User ID %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <%# 3. Words (Array of Numbers) %>
-  
+    <%# 3. Words (Array of Numbers) %>
     <% form.label :words, "Word IDs" %>
     
     <%# To submit an array, we use nil as the first argument and manually set the name with [] %>
     <%# You can repeat this field as many times as needed %>
 
-    <% words.each do |word| %>
-      <%= render "words/word", word: word %>
+
+
+    <div class="quiz_container">    
+      <% y = words.count.times.map{|x| x+1} %>
+      <% z = y.clone %>
+     
+      <% words.each_with_index do |word, x| %>
       
-      <%= form.hidden_field :words, multiple: true, value: word.id %>
-    <% end %>
+        <span class="quiz_room" id="question<%= x+1 %>" data-question-id="<%= x %>">
+          <p><%= word.word %></p>  
+        </span>     
+
+        <%= form.text_field :answers, multiple: true %>
+        <%= form.hidden_field :words, multiple: true, value: word.id %>
+        
+        <p><%= @answer_letters[x] %></p>
+        <% def_cell = z.delete(z.sample) %>
+        <%= form.hidden_field :key, multiple: true, value: @answer_letters[def_cell-1] %>
+        <span class="quiz_room" id="definition<%= def_cell %>" data-question-id="<%= x %>">
+          <p><%= word.definition %></p>
+        </span>
+      <% end %>
+    </div>
     
     
 
@@ -47,3 +68,27 @@
     <%= form.submit "Submit" %>
   </div>
 <% end %>
+
+
+<script>
+  document.addEventListener("turbo:submit-start", function(event) {
+    // 1. Identify your form (optional if you have multiple forms)
+    const form = event.target;
+    if (form.id !== "new_word_quiz") return;
+      alert("form submitted")
+
+    // 2. Get values from specific fields using their IDs
+    // Rails usually generates IDs like 'model_name_field_name'
+    const valA = document.getElementById("field_a_id").value;
+    const valB = document.getElementById("field_b_id").value;
+
+    // 3. Perform your evaluation/calculation
+    let result = (valA === "yes") ? valB : "default";
+
+    // 4. Set the value of the target form field
+    const targetField = document.getElementById("target_field_id");
+    targetField.value = result;
+    
+    console.log("Calculated value set to:", result);
+  });
+</script>

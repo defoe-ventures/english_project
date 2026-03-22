@@ -1,0 +1,234 @@
+.quiz_container {
+  display: inline-grid;
+  grid-template: 40px 40px 40px 40px 40px 40px 40px 40px 40px 40px / 140px 140px 20px 140px;
+  background-color: lightblue; 
+  grid-template-areas:
+    "question1 answer1 option1 definition1"
+    "question2 answer2 option2 definition2"
+    "question3 answer3 option3 definition3"
+    "question4 answer4 option4 definition4"
+    "question5 answer5 option5 definition5"
+    "question6 answer6 option6 definition6"
+    "question7 answer7 option7 definition7"
+    "question8 answer8 option8 definition8"
+    "question9 answer9 option9 definition9"
+    "question10 answer10 option10 definition10";    
+  grid-template-rows: auto min-content auto; 
+}
+
+.quiz_room {
+  border: 1px solid;
+  font-size: 50%;
+  text-align: center;
+}
+
+
+
+#question1 {
+   grid-area:  question1;
+}
+
+#question2 {
+   grid-area:  question2;
+}
+
+#question3 {
+   grid-area:  question3;
+}
+
+#question4 {
+   grid-area:  question4;
+}
+
+#question5 {
+   grid-area:  question5;
+}
+
+#question6 {
+   grid-area:  question6;
+}
+
+#question7 {
+   grid-area:  question7;
+}
+
+#question8 {
+   grid-area:  question8;
+}
+
+#question9 {
+   grid-area:  question9;
+}
+
+#question10 {
+   grid-area:  question10;
+}
+
+
+
+#answer1 {
+   grid-area:  question1;
+}
+
+#answer2 {
+   grid-area:  question2;
+}
+
+#answer3 {
+   grid-area:  question3;
+}
+
+#answer4 {
+   grid-area:  question4;
+}
+
+#answer5 {
+   grid-area:  question5;
+}
+
+#answer6 {
+   grid-area:  question6;
+}
+
+#answer7 {
+   grid-area:  question7;
+}
+
+#answer8 {
+   grid-area:  question8;
+}
+
+#answer9 {
+   grid-area:  question9;
+}
+
+#answer10 {
+   grid-area:  question10;
+}
+
+
+
+#option1 {
+   grid-area:  question1;
+}
+
+#option2 {
+   grid-area:  question2;
+}
+
+#option3 {
+   grid-area:  question3;
+}
+
+#option4 {
+   grid-area:  question4;
+}
+
+#option5 {
+   grid-area:  question5;
+}
+
+#option6 {
+   grid-area:  question6;
+}
+
+#option7 {
+   grid-area:  question7;
+}
+
+#option8 {
+   grid-area:  question8;
+}
+
+#option9 {
+   grid-area:  question9;
+}
+
+#option10 {
+   grid-area:  question10;
+}
+
+
+
+#definition1 {
+   grid-area:  definition1;
+}
+
+#definition2 {
+   grid-area:  definition2;
+}
+
+#definition3 {
+   grid-area:  definition3;
+}
+
+#definition4 {
+   grid-area:  definition4;
+}
+
+#definition5 {
+   grid-area:  definition5;
+}
+
+#definition6 {
+   grid-area:  definition6;
+}
+
+#definition7 {
+   grid-area:  definition7;
+}
+
+#definition8 {
+   grid-area:  definition8;
+}
+
+#definition9 {
+   grid-area:  definition9;
+}
+
+#definition10 {
+   grid-area:  definition10;
+}
+
+#question1:empty, 
+#question2:empty, 
+#question3:empty, 
+#question4:empty, 
+#question5:empty, 
+#question6:empty, 
+#question7:empty, 
+#question8:empty, 
+#question9:empty, 
+#question10:empty,
+#answer1:empty,
+#answer2:empty,
+#answer3:empty,
+#answer4:empty,
+#answer5:empty,
+#answer6:empty,
+#answer7:empty,
+#answer8:empty,
+#answer9:empty,
+#answer10:empty, 
+#option1:empty,
+#option2:empty,
+#option3:empty,
+#option4:empty,
+#option5:empty,
+#option6:empty,
+#option7:empty,
+#option8:empty,
+#option9:empty,
+#option10:empty,
+#definition1:empty,
+#definition2:empty,
+#definition3:empty,
+#definition4:empty,
+#definition5:empty,
+#definition6:empty,
+#definition7:empty,
+#definition8:empty,
+#definition9:empty,
+#definition10:empty {
+   display: none;
+}

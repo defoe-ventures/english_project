@@ -16,7 +16,8 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/new
   def new
-    @words = current_user.words.sample(5)
+    @words = current_user.words.sample(5).shuffle
+    @answer_letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
     @quiz = Quiz.new#(words: @words.pluck(:id))
   end
 
@@ -26,7 +27,14 @@ class QuizzesController < ApplicationController
 
   # POST /quizzes or /quizzes.json
   def create
-    @quiz = Quiz.new(quiz_params)
+
+    grades = quiz_params[:key].map.with_index{|correct_answer, x| correct_answer == quiz_params[:answers][x]}
+    grade_tally = grades.tally
+
+    score = ((grade_tally[true].to_f / quiz_params[:key].count.to_f) * 100)
+    @quiz = Quiz.new(quiz_params.except(:answers, :key))
+
+    @quiz.score = score
 
     respond_to do |format|
       if @quiz.save
@@ -75,6 +83,6 @@ class QuizzesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quiz_params
-      params.require(:quiz).permit(:user_id, :score, words: [])
+      params.require(:quiz).permit(:user_id, :score, words: [], answers: [], key: [])
     end
 end

@@ -5,7 +5,12 @@ class WordsController < ApplicationController
   def index
     admin_user = current_user == User.first
     @quizzes =  current_user == admin_user ? Quiz.all : current_user.quizzes
-    @words = admin_user ? User.find_by(id: params[:student_id]).words : current_user.words
+
+    if params[:student_id]
+      @words = admin_user ? User.find_by(id: params[:student_id]).words : current_user.words
+    else 
+      @words = current_user == admin_user ? Word.all : current_user.words
+    end
   end
 
   # GET /words/1 or /words/1.json

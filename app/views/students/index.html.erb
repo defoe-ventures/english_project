@@ -20,7 +20,9 @@
 <div class="students">
     <% @students.each do |student| %>
         <div class="student">
-            <%= student.email %>
+            <%= link_to student.email, root_path %>
+            <%= link_to "Words", words_path(student_id: student.id) %>
+
             <%# student.name %>
             <%# student.level %>
             <%# student.invoicee %>

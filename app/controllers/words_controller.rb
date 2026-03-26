@@ -3,9 +3,9 @@ class WordsController < ApplicationController
 
   # GET /words or /words.json
   def index
-    admin_user = false
+    admin_user = current_user == User.first
     @quizzes =  current_user == admin_user ? Quiz.all : current_user.quizzes
-    @words = current_user == admin_user ? Word.all : current_user.words
+    @words = admin_user ? User.find_by(id: params[:student_id]).words : current_user.words
   end
 
   # GET /words/1 or /words/1.json

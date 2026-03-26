@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
+    before_action :check_for_admin#, only: %i[ show edit update destroy ]
+
   def index
-    @students = Student.all
+    @students = User.all
   end
 
   def show
@@ -42,5 +44,11 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private 
+
+  def check_for_admin 
+    redirect_to(root_path) unless current_user == User.first 
   end
 end

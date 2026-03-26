@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
+
+  # get 'users', to: "users#index"
+
+  get 'students', to: "students#index"
   
 
   resources :questions
